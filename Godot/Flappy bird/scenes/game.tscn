@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://btl1og70ch2xg"]
+
+[ext_resource type="Script" path="res://scripts/game-manager.gd" id="1_bwq17"]
+[ext_resource type="PackedScene" uid="uid://bmalmq1upi345" path="res://scenes/background.tscn" id="1_ubjdr"]
+[ext_resource type="PackedScene" uid="uid://d1asen401512f" path="res://scenes/player.tscn" id="2_t4tob"]
+[ext_resource type="Texture2D" uid="uid://giy7vh516soy" path="res://assets/UI/Numbers/0.png" id="7_i1u2p"]
+[ext_resource type="Texture2D" uid="uid://ddu5346ii5y7n" path="res://assets/UI/message.png" id="8_klk6v"]
+[ext_resource type="Texture2D" uid="uid://bi6yxaoljumvo" path="res://assets/UI/gameover.png" id="9_rfa27"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ua3mg"]
+
+[node name="game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_t4tob")]
+position = Vector2(364, 272)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_bwq17")
+
+[node name="Interface" type="CanvasLayer" parent="GameManager"]
+
+[node name="ScoreDisplay" type="Sprite2D" parent="GameManager/Interface"]
+visible = false
+position = Vector2(416, 35)
+texture = ExtResource("7_i1u2p")
+
+[node name="ScoreDisplay2" type="Sprite2D" parent="GameManager/Interface"]
+visible = false
+position = Vector2(446, 35)
+texture = ExtResource("7_i1u2p")
+
+[node name="ScoreDisplay3" type="Sprite2D" parent="GameManager/Interface"]
+visible = false
+position = Vector2(386, 35)
+texture = ExtResource("7_i1u2p")
+
+[node name="Menu" type="Control" parent="GameManager/Interface"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 252.0
+offset_right = 906.0
+offset_bottom = 800.0
+
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/Interface/Menu"]
+texture = ExtResource("8_klk6v")
+
+[node name="DeathScreen" type="Control" parent="GameManager/Interface"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 189.0
+offset_right = 906.0
+offset_bottom = 737.0
+
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/Interface/DeathScreen"]
+texture = ExtResource("9_rfa27")
+
+[node name="NewGameTimer" type="Timer" parent="GameManager"]
+process_callback = 0
+wait_time = 1.5
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_ubjdr")]
+
+[node name="Ground" type="Node" parent="."]
+
+[node name="Killzone" type="Area2D" parent="Ground"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Killzone"]
+position = Vector2(102, 515)
+shape = SubResource("WorldBoundaryShape2D_ua3mg")
+
+[node name="Stickzone" type="StaticBody2D" parent="Ground"]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Stickzone"]
+position = Vector2(102, 521)
+shape = SubResource("WorldBoundaryShape2D_ua3mg")
+
+[connection signal="timeout" from="GameManager/NewGameTimer" to="GameManager" method="_on_new_game_timer_timeout"]
+[connection signal="body_entered" from="Ground/Killzone" to="Player" method="_on_killzone_body_entered"]

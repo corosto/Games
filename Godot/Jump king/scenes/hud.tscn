@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh3fprwokhsu3"]
+
+[ext_resource type="PackedScene" uid="uid://r2frlnqwsvld" path="res://scenes/timer.tscn" id="2_x3sc1"]
+[ext_resource type="FontFile" uid="uid://dt7a25ryfq84k" path="res://assets/fonts/pixel_font.ttf" id="3_jd1fj"]
+[ext_resource type="PackedScene" uid="uid://bbbe2gf8h5gm8" path="res://scenes/save.tscn" id="4_a6gmj"]
+[ext_resource type="PackedScene" uid="uid://c3eqrfi3fygdm" path="res://scenes/pause.tscn" id="5_r8yo4"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Timer" parent="." instance=ExtResource("2_x3sc1")]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 136.0
+offset_bottom = 48.0
+
+[node name="GameTips" type="RichTextLabel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("3_jd1fj")
+theme_override_font_sizes/normal_font_size = 18
+text = "[F5] - Quick save
+[F6] - Quick load
+[hold R] - Restart"
+
+[node name="SaveIcon" parent="." instance=ExtResource("4_a6gmj")]
+
+[node name="Pause" parent="." instance=ExtResource("5_r8yo4")]
+visible = false

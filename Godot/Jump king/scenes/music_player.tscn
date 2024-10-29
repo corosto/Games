@@ -1,0 +1,108 @@
+[gd_scene load_steps=34 format=3 uid="uid://boiuffjlkql5a"]
+
+[ext_resource type="AudioStream" uid="uid://ceegajydbgs5e" path="res://assets/audio/music/Ludum Dare 28 - 01.ogg" id="1_55ylk"]
+[ext_resource type="AudioStream" uid="uid://cdmxmnqm0sbs3" path="res://assets/audio/music/Ludum Dare 28 - 02.ogg" id="2_h7pru"]
+[ext_resource type="AudioStream" uid="uid://c28n0wrij4kf0" path="res://assets/audio/music/Ludum Dare 30 - 03.ogg" id="3_uhmra"]
+[ext_resource type="AudioStream" uid="uid://y2247qhw285p" path="res://assets/audio/music/Ludum Dare 30 - 04.ogg" id="4_3rnp7"]
+[ext_resource type="AudioStream" uid="uid://i186uu2gpmgk" path="res://assets/audio/music/Ludum Dare 30 - 05.ogg" id="5_qoyc2"]
+[ext_resource type="AudioStream" uid="uid://del3evxf4tt2g" path="res://assets/audio/music/Ludum Dare 30 - 06.ogg" id="6_k7nv3"]
+[ext_resource type="AudioStream" uid="uid://0qhush15guyq" path="res://assets/audio/music/Ludum Dare 30 - 07.ogg" id="7_0hihi"]
+[ext_resource type="AudioStream" uid="uid://rfkhmi7yef0x" path="res://assets/audio/music/Ludum Dare 30 - 08.ogg" id="8_vxevn"]
+[ext_resource type="AudioStream" uid="uid://kuywig0p6qrj" path="res://assets/audio/music/Ludum Dare 30 - 09.ogg" id="9_ybxao"]
+[ext_resource type="AudioStream" uid="uid://53dbf686w2rp" path="res://assets/audio/music/Ludum Dare 32 - 01.ogg" id="10_e40kv"]
+[ext_resource type="AudioStream" uid="uid://brifedg2vsyyw" path="res://assets/audio/music/Ludum Dare 32 - 02.ogg" id="11_aej57"]
+[ext_resource type="AudioStream" uid="uid://dradbj6po2w4w" path="res://assets/audio/music/Ludum Dare 32 - 03.ogg" id="12_3s08b"]
+[ext_resource type="AudioStream" uid="uid://sr3ltfw4hv2j" path="res://assets/audio/music/Ludum Dare 28 - 03.ogg" id="13_t76a0"]
+[ext_resource type="AudioStream" uid="uid://c0bqdpfl5ng1d" path="res://assets/audio/music/Ludum Dare 32 - 04.ogg" id="14_osxya"]
+[ext_resource type="AudioStream" uid="uid://xqxxjvvfefsg" path="res://assets/audio/music/Ludum Dare 32 - 05.ogg" id="15_ij5s0"]
+[ext_resource type="AudioStream" uid="uid://diiidj8521prg" path="res://assets/audio/music/Ludum Dare 38 - 01.ogg" id="16_ibhxa"]
+[ext_resource type="AudioStream" uid="uid://tcbniuisi0va" path="res://assets/audio/music/Ludum Dare 38 - 02.ogg" id="17_l5bhk"]
+[ext_resource type="AudioStream" uid="uid://c5rvhmmuek855" path="res://assets/audio/music/Ludum Dare 38 - 03.ogg" id="18_3oion"]
+[ext_resource type="AudioStream" uid="uid://co7ruaoo8stw0" path="res://assets/audio/music/Ludum Dare 38 - 04.ogg" id="19_3uj2m"]
+[ext_resource type="AudioStream" uid="uid://bio5cs3s2i5wk" path="res://assets/audio/music/Ludum Dare 38 - 05.ogg" id="20_7uwy0"]
+[ext_resource type="AudioStream" uid="uid://0vigv40jp2bs" path="res://assets/audio/music/Ludum Dare 38 - 06.ogg" id="21_vc4wi"]
+[ext_resource type="AudioStream" uid="uid://coymvidwxecoq" path="res://assets/audio/music/Ludum Dare 38 - 07.ogg" id="22_cee0u"]
+[ext_resource type="AudioStream" uid="uid://dj7kitlp7y73x" path="res://assets/audio/music/Ludum Dare 38 - 08.ogg" id="23_d2dwx"]
+[ext_resource type="AudioStream" uid="uid://dlvl4detxre83" path="res://assets/audio/music/Ludum Dare 28 - 04.ogg" id="24_xb4jl"]
+[ext_resource type="AudioStream" uid="uid://c7l2keinrn8ln" path="res://assets/audio/music/Ludum Dare 38 - 09.ogg" id="25_hdqsx"]
+[ext_resource type="AudioStream" uid="uid://5sbatgw0ohb7" path="res://assets/audio/music/Ludum Dare 38 - 10.ogg" id="26_uiobx"]
+[ext_resource type="AudioStream" uid="uid://cdmb0gvjv1n5a" path="res://assets/audio/music/Ludum Dare 28 - 05.ogg" id="27_jnly0"]
+[ext_resource type="AudioStream" uid="uid://bsvefn1dlnvow" path="res://assets/audio/music/Ludum Dare 28 - 06.ogg" id="28_xasag"]
+[ext_resource type="AudioStream" uid="uid://dwlragjdseopq" path="res://assets/audio/music/Ludum Dare 28 - 07.ogg" id="29_s3avj"]
+[ext_resource type="AudioStream" uid="uid://dd3nqrm5ikrd1" path="res://assets/audio/music/Ludum Dare 28 - 08.ogg" id="30_ookue"]
+[ext_resource type="AudioStream" uid="uid://dex5l8hi5ihym" path="res://assets/audio/music/Ludum Dare 30 - 01.ogg" id="31_ideqv"]
+[ext_resource type="AudioStream" uid="uid://bnv3mu3geulkm" path="res://assets/audio/music/Ludum Dare 30 - 02.ogg" id="32_mseww"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2vofj"]
+playback_mode = 1
+streams_count = 32
+stream_0/stream = ExtResource("1_55ylk")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_h7pru")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("13_t76a0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("24_xb4jl")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("27_jnly0")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("28_xasag")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("29_s3avj")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("30_ookue")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("31_ideqv")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("32_mseww")
+stream_9/weight = 1.0
+stream_10/stream = ExtResource("3_uhmra")
+stream_10/weight = 1.0
+stream_11/stream = ExtResource("4_3rnp7")
+stream_11/weight = 1.0
+stream_12/stream = ExtResource("5_qoyc2")
+stream_12/weight = 1.0
+stream_13/stream = ExtResource("6_k7nv3")
+stream_13/weight = 1.0
+stream_14/stream = ExtResource("7_0hihi")
+stream_14/weight = 1.0
+stream_15/stream = ExtResource("8_vxevn")
+stream_15/weight = 1.0
+stream_16/stream = ExtResource("9_ybxao")
+stream_16/weight = 1.0
+stream_17/stream = ExtResource("10_e40kv")
+stream_17/weight = 1.0
+stream_18/stream = ExtResource("11_aej57")
+stream_18/weight = 1.0
+stream_19/stream = ExtResource("12_3s08b")
+stream_19/weight = 1.0
+stream_20/stream = ExtResource("14_osxya")
+stream_20/weight = 1.0
+stream_21/stream = ExtResource("15_ij5s0")
+stream_21/weight = 1.0
+stream_22/stream = ExtResource("16_ibhxa")
+stream_22/weight = 1.0
+stream_23/stream = ExtResource("17_l5bhk")
+stream_23/weight = 1.0
+stream_24/stream = ExtResource("18_3oion")
+stream_24/weight = 1.0
+stream_25/stream = ExtResource("19_3uj2m")
+stream_25/weight = 1.0
+stream_26/stream = ExtResource("20_7uwy0")
+stream_26/weight = 1.0
+stream_27/stream = ExtResource("21_vc4wi")
+stream_27/weight = 1.0
+stream_28/stream = ExtResource("22_cee0u")
+stream_28/weight = 1.0
+stream_29/stream = ExtResource("23_d2dwx")
+stream_29/weight = 1.0
+stream_30/stream = ExtResource("25_hdqsx")
+stream_30/weight = 1.0
+stream_31/stream = ExtResource("26_uiobx")
+stream_31/weight = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_2vofj")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"

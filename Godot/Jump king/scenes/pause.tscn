@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3eqrfi3fygdm"]
+
+[ext_resource type="Script" path="res://scripts/pause.gd" id="1_at412"]
+[ext_resource type="Shader" path="res://shaders/overlay_blur.gdshader" id="2_uhvyu"]
+[ext_resource type="StyleBox" uid="uid://dr1bn865r162" path="res://shaders/panel-style.tres" id="3_7vdru"]
+[ext_resource type="PackedScene" uid="uid://dbgkpssy5bmmk" path="res://scenes/audio_controls.tscn" id="3_ngxlo"]
+[ext_resource type="FontFile" uid="uid://dt7a25ryfq84k" path="res://assets/fonts/pixel_font.ttf" id="4_6a0bb"]
+[ext_resource type="PackedScene" uid="uid://ceja85updk3ls" path="res://scenes/save_game_before_close_popup.tscn" id="4_lwu6g"]
+[ext_resource type="PackedScene" uid="uid://kh18o46b20gs" path="res://scenes/display_controls.tscn" id="6_lkufr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t0kr"]
+shader = ExtResource("2_uhvyu")
+shader_parameter/lod = 1.4
+
+[sub_resource type="InputEventKey" id="InputEventKey_urjsb"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_lxl06"]
+events = [SubResource("InputEventKey_urjsb")]
+
+[node name="Pause" type="Control"]
+process_mode = 3
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_at412")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3t0kr")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00784314, 0.00784314, 0.00784314, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 300.0
+offset_right = 220.0
+offset_bottom = 530.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("3_7vdru")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 32
+
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6a0bb")
+theme_override_font_sizes/font_size = 20
+shortcut = SubResource("Shortcut_lxl06")
+text = "Resume"
+
+[node name="Options" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("4_6a0bb")
+theme_override_font_sizes/font_size = 20
+text = "Options"
+
+[node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_6a0bb")
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 300.0
+offset_right = 820.0
+offset_bottom = 530.0
+theme_override_styles/panel = ExtResource("3_7vdru")
+
+[node name="SettingsGrid" type="GridContainer" parent="SettingsPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 24
+columns = 2
+
+[node name="AudioControls" parent="SettingsPanel/SettingsGrid" instance=ExtResource("3_ngxlo")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Display Controls" parent="SettingsPanel/SettingsGrid" instance=ExtResource("6_lkufr")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SaveGameBeforeClosePopup" parent="." instance=ExtResource("4_lwu6g")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="saveBeforeExitingButtonPressed" from="SaveGameBeforeClosePopup" to="." method="_on_save_game_before_close_popup_save_before_exiting_button_pressed"]

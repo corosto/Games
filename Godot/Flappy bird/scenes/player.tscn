@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1asen401512f"]
+
+[ext_resource type="Texture2D" uid="uid://cjelvpfyeljnb" path="res://assets/Game Objects/yellowbird-downflap.png" id="1_1xehg"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_m3u1v"]
+[ext_resource type="Texture2D" uid="uid://bvfs2k1e1e1qu" path="res://assets/Game Objects/yellowbird-midflap.png" id="2_yr2fb"]
+[ext_resource type="Texture2D" uid="uid://c8bh5i5ri14m" path="res://assets/Game Objects/yellowbird-upflap.png" id="3_b88qi"]
+[ext_resource type="AudioStream" uid="uid://boyk16sye4cl4" path="res://assets/Sound Efects/wing.wav" id="5_w3aup"]
+[ext_resource type="AudioStream" uid="uid://dndu18ercw5by" path="res://assets/Sound Efects/hit.wav" id="6_2dxss"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q6gp"]
+atlas = ExtResource("1_1xehg")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgv6b"]
+atlas = ExtResource("1_1xehg")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gs2e"]
+atlas = ExtResource("2_yr2fb")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3ix5"]
+atlas = ExtResource("3_b88qi")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d2vv2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q6gp")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgv6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gs2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3ix5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkkq5"]
+size = Vector2(30, 20)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(413, 315)
+collision_layer = 2
+script = ExtResource("1_m3u1v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_d2vv2")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mkkq5")
+
+[node name="WingAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_w3aup")
+
+[node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2dxss")
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(1.1, 1.1)
+limit_top = 0
+limit_bottom = 624
+limit_smoothed = true
+position_smoothing_enabled = true

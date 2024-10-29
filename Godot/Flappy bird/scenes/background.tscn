@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmalmq1upi345"]
+
+[ext_resource type="Texture2D" uid="uid://71e4cte42co7" path="res://assets/Game Objects/background-day.png" id="1_n4o1k"]
+[ext_resource type="Texture2D" uid="uid://b8uagvyj6w47c" path="res://assets/Game Objects/base.png" id="2_bmjgc"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(288, 0)
+
+[node name="main" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_n4o1k")
+centered = false
+
+[node name="main2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(576, 0)
+scale = Vector2(1, 1.00348)
+texture = ExtResource("1_n4o1k")
+centered = false
+
+[node name="bottom" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, 512)
+texture = ExtResource("2_bmjgc")
+centered = false
+
+[node name="bottom2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(576, 512)
+texture = ExtResource("2_bmjgc")
+centered = false

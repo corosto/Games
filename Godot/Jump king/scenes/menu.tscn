@@ -1,0 +1,107 @@
+[gd_scene load_steps=9 format=3 uid="uid://bgasrin5nk7lp"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_ao7qo"]
+[ext_resource type="Texture2D" uid="uid://c4bmt7g2ioxrm" path="res://assets/images/menu.jpg" id="2_h5weo"]
+[ext_resource type="AudioStream" uid="uid://c8bf3cid6fx5s" path="res://assets/audio/music/menu_music.ogg" id="3_snqjc"]
+[ext_resource type="StyleBox" uid="uid://dr1bn865r162" path="res://shaders/panel-style.tres" id="4_17c01"]
+[ext_resource type="PackedScene" uid="uid://dbgkpssy5bmmk" path="res://scenes/audio_controls.tscn" id="4_xjd42"]
+[ext_resource type="PackedScene" uid="uid://d0te1qvmyhcyw" path="res://scenes/new_game_popup.tscn" id="5_gqnbi"]
+[ext_resource type="FontFile" uid="uid://dt7a25ryfq84k" path="res://assets/fonts/pixel_font.ttf" id="6_3hrhq"]
+[ext_resource type="PackedScene" uid="uid://kh18o46b20gs" path="res://scenes/display_controls.tscn" id="7_6vg7b"]
+
+[node name="Menu" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ao7qo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_snqjc")
+autoplay = true
+bus = &"Music"
+
+[node name="MenuBackground" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -163.0
+offset_right = 565.0
+offset_bottom = 410.0
+scale = Vector2(1.76, 1.76)
+texture = ExtResource("2_h5weo")
+flip_h = true
+
+[node name="ButtonsPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_left = 60.0
+offset_top = 300.0
+offset_right = 220.0
+offset_bottom = 530.0
+theme_override_styles/panel = ExtResource("4_17c01")
+
+[node name="Buttons" type="GridContainer" parent="ButtonsPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 12
+
+[node name="Continue" type="Button" parent="ButtonsPanel/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_3hrhq")
+theme_override_font_sizes/font_size = 20
+disabled = true
+text = "Continue"
+
+[node name="New game" type="Button" parent="ButtonsPanel/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_3hrhq")
+theme_override_font_sizes/font_size = 20
+text = "New game
+"
+
+[node name="Options" type="Button" parent="ButtonsPanel/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_3hrhq")
+theme_override_font_sizes/font_size = 20
+text = "Options
+"
+
+[node name="Exit" type="Button" parent="ButtonsPanel/Buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_3hrhq")
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 200.0
+offset_top = 300.0
+offset_right = 820.0
+offset_bottom = 530.0
+theme_override_styles/panel = ExtResource("4_17c01")
+
+[node name="SettingsGrid" type="GridContainer" parent="SettingsPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 24
+columns = 2
+
+[node name="AudioControls" parent="SettingsPanel/SettingsGrid" instance=ExtResource("4_xjd42")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Display Controls" parent="SettingsPanel/SettingsGrid" instance=ExtResource("7_6vg7b")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NewGamePopup" parent="CanvasLayer" instance=ExtResource("5_gqnbi")]
+visible = false
+
+[connection signal="pressed" from="ButtonsPanel/Buttons/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="ButtonsPanel/Buttons/New game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="ButtonsPanel/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonsPanel/Buttons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="newGameButtonPressed" from="CanvasLayer/NewGamePopup" to="." method="_on_new_game_popup_new_game_button_pressed"]

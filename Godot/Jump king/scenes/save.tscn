@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbbe2gf8h5gm8"]
+
+[ext_resource type="Texture2D" uid="uid://b6uyy66ucrh82" path="res://assets/images/save.png" id="1_3rcv6"]
+
+[sub_resource type="Animation" id="Animation_sepnq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_1ye2q"]
+resource_name = "move"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1000, 100), Vector2(880, 100), Vector2(880, 100), Vector2(1000, 100)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0jifj"]
+_data = {
+"RESET": SubResource("Animation_sepnq"),
+"move": SubResource("Animation_1ye2q")
+}
+
+[node name="Save" type="Sprite2D"]
+position = Vector2(1000, 100)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_3rcv6")
+centered = false
+
+[node name="SaveAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0jifj")
+}

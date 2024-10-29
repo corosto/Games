@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://ceja85updk3ls"]
+
+[ext_resource type="Script" path="res://scripts/save_before_exiting_popup.gd" id="1_nyboa"]
+[ext_resource type="Shader" path="res://shaders/overlay_blur.gdshader" id="2_uwogp"]
+[ext_resource type="StyleBox" uid="uid://dr1bn865r162" path="res://shaders/panel-style.tres" id="3_1k8xj"]
+[ext_resource type="FontFile" uid="uid://dt7a25ryfq84k" path="res://assets/fonts/pixel_font.ttf" id="4_ycyve"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjcyy"]
+shader = ExtResource("2_uwogp")
+shader_parameter/lod = 1.4
+
+[node name="SaveGameBeforeClosePopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nyboa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xjcyy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupBox" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -87.0
+offset_right = 234.5
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_1k8xj")
+
+[node name="GridContainer" type="GridContainer" parent="PopupBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/v_separation = 20
+
+[node name="Label" type="Label" parent="PopupBox/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ycyve")
+theme_override_font_sizes/font_size = 20
+text = "Do you want to save before closing?"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="PopupBox/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 110
+columns = 2
+
+[node name="YesButton" type="Button" parent="PopupBox/GridContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ycyve")
+theme_override_font_sizes/font_size = 20
+text = "Yes, save"
+
+[node name="NoButton" type="Button" parent="PopupBox/GridContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_ycyve")
+theme_override_font_sizes/font_size = 20
+text = "No, just close"
+
+[connection signal="pressed" from="PopupBox/GridContainer/GridContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="PopupBox/GridContainer/GridContainer/NoButton" to="." method="_on_no_button_pressed"]

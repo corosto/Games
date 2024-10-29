@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbybf8w0qr8gr"]
+
+[ext_resource type="Texture2D" uid="uid://dghx7yomip2da" path="res://assets/Game Objects/pipe-green.png" id="1_0c3td"]
+[ext_resource type="Script" path="res://scripts/pipes.gd" id="1_aqgxp"]
+[ext_resource type="AudioStream" uid="uid://dndu18ercw5by" path="res://assets/Sound Efects/hit.wav" id="3_amf4w"]
+[ext_resource type="AudioStream" uid="uid://bhtforn071n3a" path="res://assets/Sound Efects/die.wav" id="4_4a0yw"]
+[ext_resource type="AudioStream" uid="uid://bb48ushr0315n" path="res://assets/Sound Efects/point.wav" id="5_oeanm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jddba"]
+size = Vector2(46, 500)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qmtvt"]
+radius = 1.0
+height = 986.0
+
+[node name="Pipes" type="Node2D"]
+script = ExtResource("1_aqgxp")
+
+[node name="TopPipe" type="Sprite2D" parent="."]
+position = Vector2(0, -164)
+texture = ExtResource("1_0c3td")
+centered = false
+flip_v = true
+
+[node name="TopPipeArea2D" type="Area2D" parent="TopPipe"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopPipe/TopPipeArea2D"]
+position = Vector2(26, 250)
+shape = SubResource("RectangleShape2D_jddba")
+
+[node name="BottomPipe" type="Sprite2D" parent="."]
+position = Vector2(26, 712)
+texture = ExtResource("1_0c3td")
+
+[node name="BottomPipeArea2D" type="Area2D" parent="BottomPipe"]
+position = Vector2(-26, -635)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomPipe/BottomPipeArea2D"]
+position = Vector2(26, 635)
+shape = SubResource("RectangleShape2D_jddba")
+
+[node name="Point" type="Area2D" parent="."]
+position = Vector2(0, 40)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Point"]
+position = Vector2(25, 359)
+shape = SubResource("CapsuleShape2D_qmtvt")
+
+[node name="HitAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_amf4w")
+
+[node name="FallAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4a0yw")
+
+[node name="PointAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(25, 359)
+stream = ExtResource("5_oeanm")
+
+[connection signal="body_entered" from="TopPipe/TopPipeArea2D" to="." method="_on_top_pipe_area_2d_body_entered"]
+[connection signal="body_entered" from="BottomPipe/BottomPipeArea2D" to="." method="_on_bottom_pipe_area_2d_body_entered"]
+[connection signal="body_entered" from="Point" to="." method="_on_point_body_entered"]

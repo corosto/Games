@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://kh18o46b20gs"]
+
+[ext_resource type="FontFile" uid="uid://dt7a25ryfq84k" path="res://assets/fonts/pixel_font.ttf" id="1_uacr5"]
+[ext_resource type="Script" path="res://scripts/display_controls.gd" id="1_wn5ja"]
+
+[node name="Display Controls" type="GridContainer"]
+theme_override_constants/v_separation = 44
+script = ExtResource("1_wn5ja")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uacr5")
+theme_override_font_sizes/font_size = 26
+text = "Display settings"
+horizontal_alignment = 1
+
+[node name="ModeButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uacr5")
+theme_override_font_sizes/font_size = 26
+text = "Fullscreen"
+
+[node name="ResizeButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_uacr5")
+theme_override_font_sizes/font_size = 26
+text = "x3"
+
+[connection signal="pressed" from="ModeButton" to="." method="_on_mode_button_pressed"]
+[connection signal="pressed" from="ResizeButton" to="." method="_on_resize_button_pressed"]

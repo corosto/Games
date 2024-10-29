@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://r2frlnqwsvld"]
+
+[ext_resource type="Script" path="res://scripts/timer.gd" id="1_hmr2m"]
+[ext_resource type="FontFile" uid="uid://dt7a25ryfq84k" path="res://assets/fonts/pixel_font.ttf" id="2_mnb0b"]
+
+[node name="Timer" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 112.0
+offset_bottom = 24.0
+script = ExtResource("1_hmr2m")
+
+[node name="Minutes" type="Label" parent="."]
+layout_mode = 0
+offset_right = 36.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_mnb0b")
+theme_override_font_sizes/font_size = 26
+text = "00:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seconds" type="Label" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 85.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_mnb0b")
+theme_override_font_sizes/font_size = 26
+text = "00:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Miliseconds" type="Label" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 110.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_mnb0b")
+theme_override_font_sizes/font_size = 26
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1

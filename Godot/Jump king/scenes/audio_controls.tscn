@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbgkpssy5bmmk"]
+
+[ext_resource type="PackedScene" uid="uid://drvlqnv635yq" path="res://scenes/volume_slider.tscn" id="1_eq8s0"]
+[ext_resource type="FontFile" uid="uid://dt7a25ryfq84k" path="res://assets/fonts/pixel_font.ttf" id="1_xaymc"]
+
+[node name="AudioControls" type="GridContainer"]
+offset_right = 225.0
+offset_bottom = 149.0
+theme_override_constants/v_separation = 12
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xaymc")
+theme_override_font_sizes/font_size = 26
+text = "Volume settings"
+
+[node name="MasterVolume" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MasterVolume"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xaymc")
+theme_override_font_sizes/font_size = 20
+text = "Master"
+
+[node name="VolumeSlider" parent="MasterVolume" instance=ExtResource("1_eq8s0")]
+layout_mode = 2
+busName = "Master"
+
+[node name="MusicVolume" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MusicVolume"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xaymc")
+theme_override_font_sizes/font_size = 20
+text = "Music"
+
+[node name="VolumeSlider" parent="MusicVolume" instance=ExtResource("1_eq8s0")]
+layout_mode = 2
+busName = "Music"
+
+[node name="SFXVolume" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SFXVolume"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xaymc")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+
+[node name="VolumeSlider" parent="SFXVolume" instance=ExtResource("1_eq8s0")]
+layout_mode = 2
+busName = "SFX"
